@@ -24,17 +24,13 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            <div class="form-group">
-                <label class="col-sm-3 col-sm-offset-2 control-label text-right">用户名：</label>
-                <div class="col-xs-3">
-                    <input type="text" class="form-control">
-                </div>
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-2 control-label text-right">用户名：</div>
+                <div class="col-xs-3">${userForm.username}</div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 col-sm-offset-2 control-label text-right">密码：</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control">
-                </div>
+                <div class="col-sm-3 col-sm-offset-2 control-label text-right">密码：</div>
+                <div class="col-sm-3">${userForm.password}</div>
             </div>
         </div>
     </div>

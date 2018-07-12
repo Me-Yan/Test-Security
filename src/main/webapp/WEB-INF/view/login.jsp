@@ -22,20 +22,24 @@
     </style>
 </head>
 <body>
-
     <div class="page-content">
         <div class="container-fluid">
-            <form:form modelAttribute="userForm" action="<%= request.getContextPath()%>/user/info" method="post" >
+            <form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/info" cssClass="form-horizontal" method="post" >
                 <div class="form-group">
                     <label class="col-sm-3 col-sm-offset-2 control-label text-right">用户名：</label>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control">
+                        <form:input path="username" type="text" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 col-sm-offset-2 control-label text-right">密码：</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control">
+                        <form:input path="password" type="password" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" type="submit">提交</button>
                     </div>
                 </div>
             </form:form>
