@@ -20,4 +20,28 @@ public class UserController {
 
         return new ModelAndView("userInfo");
     }
+
+    @RequestMapping("introduction")
+    public ModelAndView introduction() {
+
+        return new ModelAndView("introduction");
+    }
+
+    @RequestMapping("low")
+    public ModelAndView low() {
+
+        return new ModelAndView("low");
+    }
+
+    @RequestMapping("middle")
+    public ModelAndView middle() {
+
+        return new ModelAndView("middle");
+    }
+
+    @RequestMapping("high")
+    public ModelAndView high() {
+
+        return new ModelAndView("high");
+    }
 }
