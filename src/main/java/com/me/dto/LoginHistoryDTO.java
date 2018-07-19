@@ -8,8 +8,8 @@ import java.util.Date;
 public class LoginHistoryDTO {
 
     private Long id;
-    private String loginName;
-    private String loginIp;
+    private String username;
+    private String ip;
     private Date loginDate;
 
     public Long getId() {
@@ -20,20 +20,20 @@ public class LoginHistoryDTO {
         this.id = id;
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getLoginIp() {
-        return loginIp;
+    public String getIp() {
+        return ip;
     }
 
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public Date getLoginDate() {
