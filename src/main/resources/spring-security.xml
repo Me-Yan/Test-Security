@@ -10,7 +10,25 @@
     <sec:http pattern="/resources/**" security="none"/>
     <sec:http pattern="/login" security="none"/>
     <sec:http pattern="/logout" security="none"/>
-    <sec:http pattern="/accessDenied" security="none"/>
-	<sec:http pattern="/simulatelogin" security="none"/>
+
+    <bean id="loginFilter" class="sg.wormwood.apps.security.core.CustomUsernamePasswordAuthenticationFilter">
+        <property name="filterProcessesUrl" value="/checklogin"></property>
+        <property name="authenticationSuccessHandler" ref="authenticationSuccessHandler"></property>
+        <property name="authenticationFailureHandler" ref="authenticationFailureHandler"></property>
+        <property name="authenticationManager" ref="customAuthenticationManager"></property>
+    </bean>
+
+    <bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg name="loginFormUrl" value="/login" />
+    </bean>
+
+    <sec:http use-expressions="true" auto-config="false" entry-point-ref="authenticationProcessingFilterEntryPoint">
+        <sec:intercept-url pattern="/**" access="authenticated"/>
+        <sec:logout invalidate-session="true" logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID"/>
+        <sec:custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER"/>
+        <sec:anonymous enabled="false"/>
+    </sec:http>
+
+
 	
 </beans>

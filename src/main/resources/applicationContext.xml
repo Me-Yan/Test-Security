@@ -19,7 +19,7 @@
         <property name="dataSource" ref="sec-datasource" />
         <property name="mapperLocations">
             <list>
-                <value>classpath*:</value>
+                <value>classpath*:/mybatis/mapper/**/*.xml</value>
             </list>
         </property>
     </bean>

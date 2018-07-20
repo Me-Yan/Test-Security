@@ -3,8 +3,36 @@
 
 <mapper namespace="com.me.mapper.SecurityMapper">
     
-    <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.me.dto.UserDTO">
+    <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.me.dto.UserDetailsDTO">
         SELECT
+            userId AS userId,
+            username AS username,
+            password AS password,
+            enable AS enable,
+            createBy AS createBy,
+            createDate AS createDate,
+            updateBy AS updateBy,
+            updateDate AS updateDate
+        FROM um_user WHERE username = #{username}
+    </select>
+    
+    <select id="getHomePage" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+            res.resPath
+        FROM um_user u
+        LEFT JOIN um_user2role ur ON u.userId=ur.userId
+        LEFT JOIN um_role2res rr ON ur.roleId=rr.roleId
+        LEFT JOIN um_resource res ON rr.resId=res.resId
+        WHERE u.username = #{username}
+    </select>
+
+    <select id="listRole" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+            r.roleName
+        FROM um_user u
+        LEFT JOIN um_user2role ur ON u.userId=ur.userId
+        LEFT JOIN um_role r ON ur.roleId=r.orleId
+        WHERE u.username = #{username}
     </select>
     
 </mapper>

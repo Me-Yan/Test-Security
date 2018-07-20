@@ -1,12 +1,16 @@
 package com.me.dto;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 /**
  * Created by yanyanghong on 2018/7/12.
  */
-public class UserDTO implements Serializable {
+public class UserDetailsDTO implements Serializable, UserDetails {
 
     private static final long serialVersionUID = -5769334576670201421L;
 
@@ -18,6 +22,44 @@ public class UserDTO implements Serializable {
     private Date createDate;
     private String updateBy;
     private Date updateDate;
+
+    private String homePage;
+    private Collection<GrantedAuthority> authorities;
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHomePage() {
+        return homePage;
+    }
+
+    public void setHomePage(String homePage) {
+        this.homePage = homePage;
+    }
+
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Collection<GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
 
     public Long getUserId() {
         return userId;
@@ -67,19 +109,24 @@ public class UserDTO implements Serializable {
         this.updateDate = updateDate;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
     }
 
-    public String getPassword() {
-        return password;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
+
 }
