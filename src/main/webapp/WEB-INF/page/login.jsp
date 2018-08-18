@@ -24,27 +24,39 @@
 <body>
     <div class="page-content">
         <div class="container-fluid">
-            <form:form modelAttribute="userForm" action="${pageContext.request.contextPath}/user/info" cssClass="form-horizontal" method="post" >
+            <form:form id="loginForm" action="checklogin" cssClass="form-horizontal" method="post" >
                 <div class="form-group">
                     <label class="col-sm-3 col-sm-offset-2 control-label text-right">用户名：</label>
                     <div class="col-xs-3">
-                        <form:input path="username" type="text" class="form-control" />
+                        <input name="username" value="yanyanghong" type="text" id="username" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 col-sm-offset-2 control-label text-right">密码：</label>
                     <div class="col-sm-3">
-                        <form:input path="password" type="password" class="form-control"/>
+                        <input name="password" value="123456" type="password" id="password" class="form-control"/>
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="btn-group">
-                        <button class="btn btn-primary" type="submit">提交</button>
+                        <button type="button" class="btn btn-primary" id="btnSubmit">提交</button>
                     </div>
                 </div>
             </form:form>
         </div>
     </div>
+
+    <script>
+        $("#btnSubmit").on("click", function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            if (username && password) {
+                $("#loginForm").serialize();
+                $("#loginForm").submit();
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -1,30 +1,23 @@
-package com.me.core;
+package com.me.token;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by yanyanghong on 2018/7/20.
+ * Created by Me on 2018/8/18.
  */
 public class CustomAuthenticationToken extends UsernamePasswordAuthenticationToken {
-
-    private static final long serialVersionUID = -6803586061056200815L;
 
     private List<GrantedAuthority> authorities;
     private Object principal;
     private String credentials;
-    private boolean authenticated;
+    private Boolean authenticated = false;
     private String name;
 
     public CustomAuthenticationToken(Object principal, Object credentials) {
         super(principal, credentials);
-    }
-
-    public CustomAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
-        super(principal, credentials, authorities);
     }
 
     @Override
@@ -54,13 +47,11 @@ public class CustomAuthenticationToken extends UsernamePasswordAuthenticationTok
         this.credentials = credentials;
     }
 
-    @Override
-    public boolean isAuthenticated() {
+    public Boolean getAuthenticated() {
         return authenticated;
     }
 
-    @Override
-    public void setAuthenticated(boolean authenticated) {
+    public void setAuthenticated(Boolean authenticated) {
         this.authenticated = authenticated;
     }
 
