@@ -22,6 +22,9 @@
                 而真正意义上实际行动和思想一致的，才是可敬的人，他们往往有着超强的自律性，良好的作息习惯。</span>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">用户名:${user.username}</div>
+        </div>
     </div>
 </body>
 </html>
